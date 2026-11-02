@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asistente de Clasificación Normativa y Licencias Ambientales (Ley PACA)</title>
+  <meta name="description" content="Guía interactiva para clasificar actividades industriales según la Ley 20/2009 (PACA) y obtener la documentación mínima." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Asistente de Clasificación Normativa y Licencias Ambientales</h1>
+      <p class="subtitle">Ley 20/2009, de 4 de diciembre, de prevención y control ambiental de las actividades (PACA) · Cataluña</p>
+      <p class="lead">Clasifica tu actividad industrial dentro del régimen de intervención administrativa (Autorización, Licencia o Comunicación) y obtén el listado de documentación mínima.</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="clasificador" role="tab">1. Clasificador</button>
+    <button class="tab" data-tab="anexos" role="tab">2. Anexos PACA</button>
+    <button class="tab" data-tab="documentacion" role="tab">3. Documentación</button>
+    <button class="tab" data-tab="acerca" role="tab">4. Acerca</button>
+  </nav>
+
+  <main>
+    <!-- CLASIFICADOR -->
+    <section id="clasificador" class="panel active">
+      <h2>Diagrama de decisión</h2>
+      <div class="card">
+        <label for="tipoProyecto">Paso 1 · Tipo de proyecto</label>
+        <select id="tipoProyecto">
+          <option value="">— Selecciona —</option>
+          <option value="actividad">Actividad empresarial/industrial (legalización de actividad)</option>
+          <option value="instalacion">Instalación técnica (legalización de instalación)</option>
+        </select>
+        <p id="msgTipo" class="hint"></p>
+      </div>
+
+      <div id="bloqueActividad" class="card hidden">
+        <label for="sector">Paso 2 · Sector de la actividad</label>
+        <select id="sector">
+          <option value="">— Selecciona sector —</option>
+        </select>
+
+        <label for="actividad">Paso 3 · Actividad concreta (anexo PACA)</label>
+        <input type="search" id="filtroAct" placeholder="Filtrar por palabra clave o código (ej. 1.1, cemento, fundición)..." />
+        <select id="actividad" size="8"></select>
+        <p class="hint">Selecciona la actividad cuyo umbral coincida con tu proyecto. El texto incluye el límite (capacidad, potencia, superficie…).</p>
+
+        <div class="actions">
+          <button id="btnClasificar" class="primary">Clasificar</button>
+          <button id="btnLimpiar" class="secondary">Limpiar</button>
+        </div>
+      </div>
+
+      <div id="resultado" class="result hidden"></div>
+    </section>
+
+    <!-- ANEXOS -->
+    <section id="anexos" class="panel">
+      <h2>Explorador de anexos PACA</h2>
+      <div class="filters">
+        <input type="search" id="busquedaAnexo" placeholder="Buscar por texto o código..." />
+        <select id="filtroAnexo">
+          <option value="">Todos los anexos</option>
+          <option value="I.1">Anexo I.1</option>
+          <option value="I.2">Anexo I.2</option>
+          <option value="I.3">Anexo I.3</option>
+          <option value="II">Anexo II</option>
+          <option value="III">Anexo III</option>
+        </select>
+        <select id="filtroRegimen">
+          <option value="">Todos los regímenes</option>
+          <option value="Autorización ambiental">Autorización ambiental</option>
+          <option value="Licencia ambiental">Licencia ambiental</option>
+          <option value="Comunicación ambiental">Comunicación ambiental</option>
+        </select>
+      </div>
+      <p id="contadorAnexo" class="hint"></p>
+      <ul id="listaAnexo" class="activity-list"></ul>
+    </section>
+
+    <!-- DOCUMENTACION -->
+    <section id="documentacion" class="panel">
+      <h2>Documentación mínima por régimen</h2>
+      <p>Marca los documentos a medida que los tengas preparados. La lista se basa en los artículos 18, 40 y 49 de la Ley 20/2009.</p>
+      <div class="docs-grid">
+        <div class="doc-card" data-regime="Autorización ambiental">
+          <h3>🔴 Autorización ambiental (Anexos I.1 e I.2)</h3>
+          <p class="authority">Tramitación: Generalitat de Catalunya · Control cada 2 (I.1) o 4 (I.2) años.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox"> Solicitud de autorización ambiental</label></li>
+            <li><label><input type="checkbox"> Estudio de impacto ambiental (art. 18), firmado por técnico competente</label></li>
+            <li><label><input type="checkbox"> Proyecto básico (descripción detallada y alcance de la actividad e instalaciones)</label></li>
+            <li><label><input type="checkbox"> Documentación sobre accidentes graves (si aplica, legislación sectorial)</label></li>
+            <li><label><input type="checkbox"> Informe urbanístico del ayuntamiento (compatibilidad urbanística y servicios)</label></li>
+            <li><label><input type="checkbox"> Características del suelo (si la actividad es potencialmente contaminante del suelo)</label></li>
+            <li><label><input type="checkbox"> Designación del técnico responsable de la ejecución del proyecto</label></li>
+            <li><label><input type="checkbox"> Declaración de datos confidenciales (si procede)</label></li>
+            <li><label><input type="checkbox"> Documentación sectorial adicional exigible</label></li>
+          </ul>
+        </div>
+        <div class="doc-card" data-regime="Licencia ambiental">
+          <h3>🟠 Licencia ambiental (Anexo II)</h3>
+          <p class="authority">Tramitación: Ayuntamiento correspondiente · Control cada 6 años.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox"> Solicitud de licencia ambiental</label></li>
+            <li><label><input type="checkbox"> Proyecto básico con estudio ambiental (contenido art. 18 a, c, d, f, g)</label></li>
+            <li><label><input type="checkbox"> Características del suelo (si la actividad es potencialmente contaminante)</label></li>
+            <li><label><input type="checkbox"> Designación del técnico responsable de ejecutar el proyecto</label></li>
+            <li><label><input type="checkbox"> Declaración de datos confidenciales (si procede)</label></li>
+            <li><label><input type="checkbox"> Informe del departamento competente en seguridad industrial (si hay sustancias tóxicas/muy tóxicas)</label></li>
+            <li><label><input type="checkbox"> Documentación sectorial adicional exigible</label></li>
+          </ul>
+        </div>
+        <div class="doc-card" data-regime="Comunicación ambiental">
+          <h3>🟢 Comunicación ambiental (Anexo III)</h3>
+          <p class="authority">Tramitación: Comunicación previa al Ayuntamiento · Autocontrol periódico.</p>
+          <ul class="checklist">
+            <li><label><input type="checkbox"> Comunicación ambiental (declaración responsable)</label></li>
+            <li><label><input type="checkbox"> Proyecto básico con memoria ambiental (o solo memoria ambiental si así se determina reglamentariamente)</label></li>
+            <li><label><input type="checkbox"> Certificación del técnico competente (adecuación al estudio ambiental y proyecto; cumplimiento de requisitos ambientales)</label></li>
+            <li><label><input type="checkbox"> Certificación de entidad colaboradora o servicios técnicos municipales (si se requieren mediciones de emisiones/ruidos/vibraciones/luminosidad)</label></li>
+            <li><label><input type="checkbox"> Autorización de vertidos (si la actividad incluye vertido de aguas residuales)</label></li>
+            <li><label><input type="checkbox"> Títulos administrativos habilitantes o controles iniciales sectoriales</label></li>
+          </ul>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="btnImprimir" class="secondary">Imprimir / Guardar PDF</button>
+        <button id="btnResetChecks" class="secondary">Reiniciar marcas</button>
+      </div>
+    </section>
+
+    <!-- ACERCA -->
+    <section id="acerca" class="panel">
+      <h2>Acerca de esta herramienta</h2>
+      <p>Asistente educativo para la asignatura <em>Proyectos de Ingeniería</em>. Clasifica actividades según la Ley 20/2009 (PACA) de Cataluña y lista la documentación mínima por régimen de intervención.</p>
+      <h3>Regímenes de intervención (art. 7)</h3>
+      <ul>
+        <li><strong>Autorización ambiental (Anexos I.1 e I.2)</strong>: actividades de mayor impacto ambiental. Tramitada por la Generalitat. Incluye evaluación de impacto ambiental.</li>
+        <li><strong>Declaración de impacto ambiental con autorización sustantiva (Anexo I.3)</strong>: actividades evaluadas en el procedimiento sectorial correspondiente.</li>
+        <li><strong>Licencia ambiental (Anexo II)</strong>: actividades de impacto medio. Tramitada por el ayuntamiento.</li>
+        <li><strong>Comunicación ambiental (Anexo III)</strong>: actividades de menor impacto. Comunicación previa al ayuntamiento.</li>
+      </ul>
+      <h3>Referencias</h3>
+      <ul>
+        <li>Ley 20/2009, de 4 de diciembre, de prevención y control ambiental de las actividades (PACA). BOE núm. 12, de 14 de enero de 2010.</li>
+        <li>Apuntes de la asignatura Proyectos de Ingeniería — Tipologías y clasificación de proyectos de ingeniería.</li>
+      </ul>
+      <p class="hint">Herramienta de apoyo educativo. La clasificación definitiva corresponde a la administración competente; consulta siempre la normativa vigente y el anexo aplicable.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Asistente PACA · Herramienta educativa · Ley 20/2009</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
