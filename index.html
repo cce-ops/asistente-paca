@@ -28,22 +28,33 @@
     <section id="clasificador" class="panel active">
       <h2>Diagrama de decisión</h2>
       <div class="card">
-        <label for="tipoProyecto">Paso 1 · Tipo de proyecto</label>
+        <label for="tipoProyecto">Paso 1 · Tipo de proyecto <span class="help" title="Actividad: negocio/industria con incidencia ambiental (PACA). Instalación: equipos técnicos (eléctricos, gas, térmicos, etc.) que se legalizan por su normativa técnica.">?</span></label>
         <select id="tipoProyecto">
           <option value="">— Selecciona —</option>
           <option value="actividad">Actividad empresarial/industrial (legalización de actividad)</option>
           <option value="instalacion">Instalación técnica (legalización de instalación)</option>
         </select>
         <p id="msgTipo" class="hint"></p>
+        <div id="bloqueInstalacion" class="hidden inst-box">
+          <h3>Legalización de instalaciones técnicas</h3>
+          <p>La Ley PACA clasifica <strong>actividades</strong>, no instalaciones. Una instalación técnica se legaliza por su normativa sectorial/industrial (registro o autorización de instalación), normalmente ante el órgano técnico competente (EIC/industria), con proyecto ejecutivo, inspección inicial y certificado final de obra.</p>
+          <ul>
+            <li><strong>Eléctricas BT/AT:</strong> proyecto, inspección inicial por EIC y registro.</li>
+            <li><strong>Gas/receptores:</strong> proyecto y puesta en servicio ante industria.</li>
+            <li><strong>Térmicas/climatización (RITE):</strong> proyecto, pruebas y certificación.</li>
+            <li><strong>Almacenaje de productos químicos:</strong> puede requerir también clasificación PACA si forma parte de una actividad.</li>
+          </ul>
+          <p class="hint">Si la instalación forma parte de una actividad industrial, clasifica la <strong>actividad</strong> (Paso 1 = Actividad) para determinar el régimen PACA. Si es solo una instalación aislada, usa el circuito de legalización de instalaciones.</p>
+        </div>
       </div>
 
       <div id="bloqueActividad" class="card hidden">
-        <label for="sector">Paso 2 · Sector de la actividad</label>
+        <label for="sector">Paso 2 · Sector de la actividad <span class="help" title="Sectores del anexo PACA (energía, metales, industria química, alimentaria, residuos, agroindustria, etc.). Elige el que encaje con tu proyecto.">?</span></label>
         <select id="sector">
           <option value="">— Selecciona sector —</option>
         </select>
 
-        <label for="actividad">Paso 3 · Actividad concreta (anexo PACA)</label>
+        <label for="actividad">Paso 3 · Actividad concreta (anexo PACA) <span class="help" title="Busca la actividad cuyo umbral (potencia, capacidad, superficie, número de plazas…) coincida con tu proyecto. El texto del anexo incluye el límite.">?</span></label>
         <input type="search" id="filtroAct" placeholder="Filtrar por palabra clave o código (ej. 1.1, cemento, fundición)..." />
         <select id="actividad" size="8"></select>
         <p class="hint">Selecciona la actividad cuyo umbral coincida con tu proyecto. El texto incluye el límite (capacidad, potencia, superficie…).</p>

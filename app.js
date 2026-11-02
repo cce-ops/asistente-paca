@@ -135,18 +135,22 @@ function renderResult(a) {
 }
 
 tipoSel.addEventListener("change", () => {
+  const bloqueInst = $("#bloqueInstalacion");
   if (tipoSel.value === "actividad") {
     msgTipo.textContent = "La Ley PACA regula actividades empresariales/industriales con incidencia ambiental.";
     bloque.classList.remove("hidden");
+    bloqueInst.classList.add("hidden");
     populateSectors();
     populateActivities();
   } else if (tipoSel.value === "instalacion") {
-    msgTipo.textContent = "Las instalaciones técnicas (eléctricas, gas, térmicas, etc.) se legalizan mediante el registro/autorización de instalaciones (no clasificación PACA). Si la instalación forma parte de una actividad industrial, clasifica la actividad.";
+    msgTipo.textContent = "Las instalaciones técnicas no se clasifican por PACA: se legalizan por su normativa técnica/industrial. Si la instalación forma parte de una actividad industrial, clasifica la actividad.";
     bloque.classList.add("hidden");
+    bloqueInst.classList.remove("hidden");
     resultado.classList.add("hidden");
   } else {
     msgTipo.textContent = "";
     bloque.classList.add("hidden");
+    bloqueInst.classList.add("hidden");
     resultado.classList.add("hidden");
   }
 });
@@ -165,6 +169,7 @@ $("#btnLimpiar").addEventListener("click", () => {
   tipoSel.value = "";
   msgTipo.textContent = "";
   bloque.classList.add("hidden");
+  $("#bloqueInstalacion").classList.add("hidden");
   sectorSel.value = "";
   filtroAct.value = "";
   actSel.innerHTML = "";

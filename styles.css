@@ -135,4 +135,46 @@ button.secondary { background: #e5e7eb; color: var(--text); }
 .checklist input { margin-right: .5rem; }
 .authority { color: var(--muted); font-size: .9rem; }
 
+.help {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #1f2937;
+  font-size: .75rem;
+  font-weight: 700;
+  cursor: help;
+  margin-left: .35rem;
+  vertical-align: middle;
+  position: relative;
+}
+.help:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 130%;
+  background: #111827;
+  color: #fff;
+  padding: .5rem .65rem;
+  border-radius: 8px;
+  font-size: .8rem;
+  font-weight: 400;
+  width: 260px;
+  z-index: 50;
+  box-shadow: 0 8px 20px rgba(0,0,0,.2);
+  white-space: normal;
+}
+.inst-box {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+.inst-box h3 { margin-top: 0; color: #0369a1; }
+.inst-box ul { margin: .5rem 0; }
 footer { text-align: center; color: var(--muted); padding: 1rem; font-size: .85rem; }

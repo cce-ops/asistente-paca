@@ -25,6 +25,23 @@ https://cce-ops.github.io/asistente-paca/
 | `data.js` | Actividades de los anexos PACA |
 | `app.js` | Lógica del clasificador, explorador y documentación |
 
+## Caso real de uso (ejemplo para el alumno)
+
+**Proyecto:** taller de reparación de vehículos con cabina de pintura y tratamiento de superficies.
+
+1. En el clasificador elige **Actividad empresarial/industrial**.
+2. Sector: **Otras actividades (12)**.
+3. Actividad: `12.19.a` (mantenimiento y reparación de vehículos que hacen operaciones de pintura y tratamiento de superficie).
+
+**Resultado:**
+
+- Régimen: **Licencia ambiental (Anexo II)**.
+- Administración: **Ayuntamiento** correspondiente.
+- Control periódico: **cada 6 años**.
+- Documentación mínima: solicitud, proyecto básico con estudio ambiental, características del suelo si aplica, designación del técnico responsable, declaración de datos confidenciales, informe de seguridad industrial si hay sustancias tóxicas/muy tóxicas, etc.
+
+**Para qué sirve en el proyecto:** el alumno puede indicar en la memoria que el proyecto se somete a licencia ambiental municipal, preparar la documentación correspondiente y evitar tratarlo como una simple comunicación previa.
+
 ## Aviso
 
 Herramienta de apoyo educativo. La clasificación definitiva corresponde a la administración competente; consulta siempre la normativa vigente.
