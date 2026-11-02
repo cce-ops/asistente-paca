@@ -2,6 +2,8 @@
 
 Herramienta web estática (HTML/CSS/JS) para clasificar una actividad industrial según la Ley 20/2009 (PACA) de Cataluña y obtener la documentación mínima por régimen de intervención administrativa.
 
+https://cce-ops.github.io/asistente-paca/
+
 ## Uso
 
 - Abre `index.html` con doble clic en el navegador. No requiere instalación ni servidor.
